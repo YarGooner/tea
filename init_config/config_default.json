@@ -1,0 +1,52 @@
+{
+  "constants":
+    [
+      {
+        "host": "localhost",
+        "name": "yii2-advanced",
+        "username": "root",
+        "password": ""
+      }
+    ],
+  "tasks":
+    [
+      {
+        "task": "composer-update",
+        "active": true
+      },
+      {
+        "task": "env-init",
+        "active": true,
+        "environment": "dev"
+      },
+      {
+        "task": "db-init",
+        "active": true
+      },
+      {
+        "task": "content-init",
+        "active": true,
+        "archive": "2018-10-25 17-10-43_content.zip"
+      },
+      {
+        "task": "db-create",
+        "active": false,
+        "name": "new_database",
+        "username": "root",
+        "password": ""
+      },
+      {
+        "task": "dump-import-d",
+        "active": true,
+        "dump": "dump-2018-10-25-17-24-43.sql"
+      },
+      {
+        "task": "user-create",
+        "active": false,
+        "tablename": "user_admin",
+        "username": "NewAdmin",
+        "password": "admin123",
+        "email": "admin123@ya.ru"
+      }
+    ]
+}

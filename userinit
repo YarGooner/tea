@@ -1,0 +1,76 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Yii Application Initialization Tool
+ *
+ * In order to run in non-interactive mode:
+ *
+ * init --env=Development --overwrite=n
+ */
+
+include 'initFunctions.php';
+
+if (!extension_loaded('openssl')) {
+    die('The OpenSSL PHP extension is required by Yii2.');
+}
+
+//$params = getParams();
+//$root = str_replace('\\', '/', __DIR__);
+//$envs = require "$root/environments/index.php";
+//$envNames = array_keys($envs);
+//$db = '';
+//$file = '';
+
+echo "Yii Application Initialization Tool v1.0\n\n";
+
+
+
+$file = getJson();
+$constants = $file['constants'][0];
+$tasks = $file['tasks'];
+$host = $constants['host'];
+$db_name = $constants['name'];
+$username = $constants['username'];
+$password = $constants['password'];
+echo "\n  Start initialization ...\n\n";
+foreach ($tasks as $step){
+    if($step['active'] == true){
+        switch ($step['task']){
+            case 'composer-update':
+                exec('composer update');
+                echo "\n  #Task: \"composer-update\" completed. \n\n";
+                break;
+            case 'env-init':
+                $env = $step['environment'];
+                initEnv($env);
+                echo "\n  #Task: \"env-init\" completed. \n\n";
+                break;
+            case 'db-init':
+                initDatabase($constants);
+                echo "\n  #Task: \"db-init\" completed.\n\n";
+                break;
+            case 'content-init':
+                $file = $step['archive'];
+                initContent($file);
+                echo "\n  #Task: \"content-init\" completed.\n\n";
+                break;
+            case 'db-create':
+                $constants = createDB($constants,$step);
+                echo "\n  #Task: \"db-create\" completed.\n\n";
+                break;
+            case 'dump-import':
+                $dump = $step['dump'];
+                importDump($dump);
+                echo "\n  #Task: \"dump-import\" completed.\n\n";
+                break;
+            case 'user-create':
+                $dump = $step['dump'];
+                createUser($constants,$step);
+                echo "\n  #Task: \"user-create\" completed.\n\n";
+                break;
+        }
+    }
+}
+
+echo "\n  ... initialization completed.\n\n";
+

@@ -1,0 +1,33 @@
+mixin table__ceil(content, params)
+    td(width = content.width || "", height= content.height|| "", style = content.style || "").table__ceil&attributes(attributes)
+        p !{content.text}
+        block
+
+
+
+mixin table__row-subtable(content, params)
+    tr(width="640" height=content.height || "" style=content.style).table__row-subtable&attributes(attributes)
+        td(width="640")
+            table(width="640")
+                tr( width="640" height=content.height || "")
+                    for item in content.items
+                        +table__ceil(item)
+
+                    // -console.log(content);
+                    block
+
+
+mixin table__row(content, params)
+    tr(width="640" height = (content.height) ? content.height : "").table__row
+        td(width = content.width || "", height= content.height || "", style = content.style || "").row&attributes(attributes)
+            p !{content.text}
+                // TODO Сделать проверку на список (массив), если массив то циклом подставлять текст в параграф
+                  // -console.log(Array.isArray(content.text);
+                  // - if(Array.isArray(content.text) ){
+                  //     each item in content.text
+                  //       p !{content.text.item}
+                  // -}
+                  // - if(!Array.isArray(content.text) ){
+                  //   p !{content.text}
+                  // -}
+                block

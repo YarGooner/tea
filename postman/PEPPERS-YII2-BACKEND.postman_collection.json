@@ -1,0 +1,568 @@
+{
+	"info": {
+		"_postman_id": "3f0ff93d-64a0-48ff-b3bd-8e3c0545bcf1",
+		"name": "PEPPERS-YII2-BACKEND",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"description": null,
+			"item": [
+				{
+					"name": "Регистрация пользователя",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26b0d448-e38d-464a-8b41-4f816bd293a4",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"if( jsonData.success ){",
+									"    postman.setEnvironmentVariable(\"token\", jsonData.data.profile.access_token);",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "d@peppers-studio.ru",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "111111",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Абама",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rules_accepted",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "d3@peppers-studio.ru",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "dddd",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/user/signup",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Авторизация пользователя",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0bd5a520-22c1-478f-a4de-87cd5b1a4672",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"if( jsonData.success ){",
+									"    postman.setEnvironmentVariable(\"token\", jsonData.data.profile.access_token);    ",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "d@peppers-studio.ru",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "111111",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "v.donov@peppers-studio.ru",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "9kR5bDed",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/user/login",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Выход из системы",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api_url}}/user/logout",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить данные профиля",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api_url}}/user/profile",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение данных профиля",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "gackiep@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "d@peppers-studio.ru",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "v.donov@peppers-studio.ru",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "first_name",
+									"value": "Б",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "middle_name",
+									"value": "Бла Бла",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "last_name",
+									"value": "Бла Бла Бла",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "Обамчик",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "999",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/user/update",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Восстановление пароля неавторизованного",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "d.potekhin@peppers-studio.ru",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "d@peppers-studio.ru",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/user/password-restore",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"password-restore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение пароля",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "333333",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "H0fP3jg7gcae6F2QVdmLoyAnwyfuEmnQ_1552739008",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/user/reset-password",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Text",
+			"description": "",
+			"item": [
+				{
+					"name": "Список текстов",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api_url}}/text",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"text"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "54f0cfa7-6eaa-4e3f-9cb7-43cc87131b92",
+							"name": "Успех",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{domain}}/api/v1/text",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"text"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "false",
+									"name": "Access-Control-Allow-Credentials",
+									"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2019 13:38:03 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=20",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.13",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Tue Jan 19 2038 06:14:07 GMT+0300 (RTZ 2 (зима))",
+									"httpOnly": true,
+									"domain": "dev.peppers-studio.ru",
+									"path": "/",
+									"secure": false,
+									"value": "6562f7480e006739d71eeb2c58ea434a",
+									"key": "advanced-api"
+								},
+								{
+									"expires": "Tue Jan 19 2038 06:14:07 GMT+0300 (RTZ 2 (зима))",
+									"httpOnly": true,
+									"domain": "dev.peppers-studio.ru",
+									"path": "/",
+									"secure": false,
+									"value": "1f5866faba80c7e6f62279d3a2432a622c261bf0433dd4f53f8090bb516c2669a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_csrf-api%22%3Bi%3A1%3Bs%3A32%3A%22Exj0GUMF-8kcXfDCsScom2-LZVAxH1gJ%22%3B%7D",
+									"key": "_csrf-api"
+								},
+								{
+									"expires": "Tue Jan 19 2038 06:14:07 GMT+0300 (RTZ 2 (зима))",
+									"httpOnly": true,
+									"domain": "dev.peppers-studio.ru",
+									"path": "/",
+									"secure": false,
+									"value": "bfd8c79c505a48f6799e606c9e09ae0762e0ffa6eac3b8d418dcdd790e35bc10a%3A2%3A%7Bi%3A0%3Bs%3A3%3A%22soc%22%3Bi%3A1%3Bs%3A2%3A%22vk%22%3B%7D",
+									"key": "soc"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"texts\": {\n            \"Правила\": \"Первое\\nВторое\\nТретье\\n\"\n        },\n        \"status\": 200\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Exceptions",
+			"description": "",
+			"item": [
+				{
+					"name": "BAD REQUEST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "560a7fc1-600d-40af-8694-561bf451b92d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{domain}}/user/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	}
+}

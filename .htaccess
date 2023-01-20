@@ -1,0 +1,18 @@
+# Mod_Autoindex
+<IfModule mod_autoindex.c>
+  # Запрещаем просмотр содержимого папок
+#  Options -Indexes
+</IfModule>
+
+# Mod_Rewrite
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  # Включаем mod_rewrite
+  RewriteEngine On
+   RewriteCond %{REQUEST_URI} !^(/2018/181214)?/htdocs\/
+   RewriteRule ^(.*)$ htdocs/$1
+
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteCond %{REQUEST_FILENAME}\.php -f
+   RewriteRule ^(.*)$ $1.php [L]
+</IfModule>

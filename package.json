@@ -1,0 +1,19 @@
+{
+  "name": "template",
+  "version": "0.0.1",
+  "author": "peppers",
+  "private": true,
+  "engines": {
+    "node": ">=6"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-rename": "latest",
+    "gulp-replace": "latest",
+    "html-entities": "^1.2.1",
+    "gulp-pug": "latest"
+  },
+  "dependencies": {
+
+  }
+}

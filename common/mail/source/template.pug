@@ -1,0 +1,87 @@
+//gulp email
+-
+  // var makeStringStyle = function (style) {
+  //   var styleSring = '';
+  //   for (key in style) {
+  //     sttyleString = sttyleString + key + ":" + style(key) + ";" ;
+  //   }
+  //   return styleString;
+  // }
+
+  var paramsItems ={
+    head:  {
+      width: "600",
+      height: "50",
+      style:
+      "background-color: #ffe9a6;" +
+      "color: #c44311;" +
+      "font-size: 16px;" +
+      "text-align: center;" +
+      "text-transform: uppercase;",
+      text: "Заголовок таблицы"
+    },
+
+    innerTable: {
+      height: 100,
+      style: "background-color: #da673a;" +
+      "color: #762100;" +
+      "font-size: 14px;",
+      items: [
+        {
+          width: 150,
+          height: 100,
+          style: "padding-left: 14px;" +
+          "text-align: left;",
+          text: "эта строка"
+        },
+        {
+          width: 300,
+          height: 100,
+          style: "text-align: center;",
+          text: "является"
+        },
+        {
+          width: 150,
+          height: 100,
+          style: "padding-right: 14px;" +
+          "text-align: right;",
+          text: "вложенной таблицей"
+        }
+      ]
+    },
+    mainTextBlock : {
+      height: auto,
+      style:
+      "background-color: #551b04;" +
+      "color: #ffe9a6;" +
+      "padding: 10px;",
+      text: [
+        "Допустим текст под номером один будет тут",
+        "Пусть этот текст будет после первого",
+        "Третьим текстом будет что-то неожиданное, например, импульс фотона",
+        "Замыкающим текстом будет что-то привычное и скучное"
+      ]
+    }
+  };
+
+
+include ./components/components
+
+
+//php head
+
+html
+  head
+    title {{mailTitle}}
+    meta( http-equiv="Content-Type" content="text/html; charset=utf-8")
+    meta( http-equiv="pragma" content="no-cache")
+    meta( http-equiv="cache-control" content="no-cache")
+    meta( http-equiv="expires" content="0")
+  body
+    table(id="Table_02" width="640" border="0" cellpadding="0" cellspacing="0" style="margin: auto; display: block;")
+      +table__row(paramsItems.head)
+      +table__row-subtable(paramsItems.innerTable)
+      +table__row(paramsItems.mainTextBlock)
+
+
+

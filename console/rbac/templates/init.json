@@ -1,0 +1,63 @@
+{
+  "roles": [
+    {
+      "name": "Admin",
+      "description": "Administrator"
+    },
+    {
+      "name": "Author",
+      "description": "Can manage posts"
+    }
+  ],
+  "permissions": [
+    {
+      "name": "createPost",
+      "description": "Create a post"
+    },
+    {
+      "name": "deletePost",
+      "description": "Delete a post"
+    },
+    {
+      "name": "updatePost",
+      "description": "Update a post"
+    },
+    {
+      "name": "updateOwnPost",
+      "description": "Update own post",
+      "rule": "AuthorRule"
+    }
+  ],
+  "children": [
+    {
+      "parent": "Author",
+      "child": "createPost"
+    },
+    {
+      "parent": "Admin",
+      "child": "updatePost"
+    },
+    {
+      "parent": "Admin",
+      "child": "Author"
+    },
+    {
+      "parent": "updateOwnPost",
+      "child": "updatePost"
+    },
+    {
+      "parent": "Author",
+      "child": "updateOwnPost"
+    }
+  ],
+  "assignments": [
+    {
+      "parent": "Author",
+      "child": "user"
+    },
+    {
+      "parent": "Author",
+      "child": "user2"
+    }
+  ]
+}

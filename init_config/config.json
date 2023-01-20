@@ -1,0 +1,52 @@
+{
+  "constants":
+    [
+      {
+        "host": "192.168.50.222",
+        "name": "yii-backend.loc",
+        "username": "root",
+        "password": ""
+      }
+    ],
+  "tasks":
+    [
+      {
+        "task": "composer-update",
+        "active": false
+      },
+      {
+        "task": "env-init",
+        "active": true,
+        "environment": "dev"
+      },
+      {
+        "task": "db-init",
+        "active": false
+      },
+      {
+        "task": "content-init",
+        "active": false,
+        "archive": "2018-10-25 17-10-43_content.zip"
+      },
+      {
+        "task": "db-create",
+        "active": false,
+        "name": "yii-backend.loc",
+        "username": "root",
+        "password": ""
+      },
+      {
+        "task": "dump-import",
+        "active": false,
+        "dump": "dump-2018-10-25-17-24-43.sql"
+      },
+      {
+        "task": "user-create",
+        "active": false,
+        "tablename": "user_admin",
+        "username": "admin",
+        "password": "admin123",
+        "email": "admin1231@ya.ru"
+      }
+    ]
+}

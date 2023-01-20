@@ -1,0 +1,112 @@
+{
+  "success": true,
+  "actions": {
+    "password-restore": {
+      "description": [],
+      "methods": "*"
+    },
+    "email-verification": {
+      "description": [],
+      "methods": "*"
+    },
+    "email-confirm": {
+      "description": [],
+      "methods": "*"
+    },
+    "reset-password": {
+      "description": [],
+      "methods": "*"
+    },
+    "index": {
+      "description": [],
+      "methods": "*"
+    },
+    "view": {
+      "description": [],
+      "methods": {
+        "*": {
+          "access": "user",
+          "request": {
+            "user": []
+          },
+          "response": {
+            "user": []
+          }
+        }
+      }
+    },
+    "create": {
+      "description": [],
+      "methods": {
+        "POST": {
+          "access": "admin",
+          "request": {
+            "admin": []
+          },
+          "response": {
+            "admin": []
+          }
+        },
+        " GET": {
+          "access": "admin",
+          "request": {
+            "admin": []
+          },
+          "response": {
+            "admin": []
+          }
+        }
+      }
+    },
+    "update": {
+      "description": [],
+      "methods": {
+        "POST": {
+          "access": "user, admin",
+          "request": {
+            "user": [],
+            "admin": []
+          },
+          "response": {
+            "user": [],
+            "admin": []
+          }
+        }
+      }
+    },
+    "delete": {
+      "description": [],
+      "methods": {
+        "*": {
+          "access": "admin",
+          "request": {
+            "admin": []
+          },
+          "response": {
+            "admin": []
+          }
+        }
+      }
+    },
+    "options": {
+      "description": [],
+      "methods": "*"
+    },
+    "dev-info": {
+      "description": [],
+      "methods": "*"
+    },
+    "login": {
+      "description": [],
+      "methods": "*"
+    },
+    "signup": {
+      "description": [],
+      "methods": "*"
+    },
+    "logout": {
+      "description": [],
+      "methods": "*"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "success":true,
+  "actions":{
+    "dev-info":{
+      "description":"Dev only action. Returns all actions of the controller",
+      "methods":{
+        "GET":{
+          "access": "DEV",
+          "request": [],
+          "response": []
+        }
+      }
+    },
+    "subscribe":{
+      "description": "Subscribe user to new posts",
+      "methods":{
+        "GET":{
+          "access": "USER",
+          "request": {
+            "USER": {
+              "email": {
+                "dev": "false",
+                "optional": "false",
+                "type": "string",
+                "validation": {
+                  "type": "email"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      }
+    },
+    "unsubscribe":{
+      "description": "Unsubscribe user from all mailings",
+      "methods":{
+        "GET":{
+          "access": "USER",
+          "request": {
+            "USER": {
+              "email": {
+                "dev": "false",
+                "optional": "false",
+                "type": "string",
+                "validation": {
+                  "type": "email"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      }
+    },
+    "index":{
+      "description": "Base action of controller",
+      "methods": {
+        "GET": {
+          "description": "Return all information about current user",
+          "access": "USER",
+          "request": {
+            "USER": []
+          }
+        },
+        "POST": {
+          "description": "Return all information about chosen user",
+          "access": ["USER","ADMIN"],
+          "request": {
+            "USER": [],
+            "ADMIN": {
+              "id": {
+                "dev": "false",
+                "optional": "true",
+                "type": "integer",
+                "validation": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "response": {
+            "id": "integer",
+            "value": "string",
+            "options": []
+          }
+        }
+      }
+    }
+  }
+}
